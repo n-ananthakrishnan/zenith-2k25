@@ -684,3 +684,4 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.height = window.innerHeight;
     }, 250));
 });
+
