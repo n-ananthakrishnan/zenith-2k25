@@ -276,10 +276,8 @@ function init3DHoverEffect() {
 
 // Countdown timer
 function initCountdown() {
-    // Set the registration end date (15 days before the event)
-    const eventDate = new Date(2025, 3, 30); // April 30, 2025
-    const regEndDate = new Date(eventDate);
-    regEndDate.setDate(eventDate.getDate() - 15); // Registration ends 15 days before
+    // Set the idea submission deadline to April 27, 2025
+    const ideaSubmissionDeadline = new Date(2025, 3, 27, 23, 59, 59); // April 27, 2025 at 11:59:59 PM
     
     const countdownDays = document.getElementById('countdown-days');
     const countdownHours = document.getElementById('countdown-hours');
@@ -291,7 +289,7 @@ function initCountdown() {
     
     function updateCountdown() {
         const currentDate = new Date();
-        const diff = regEndDate - currentDate;
+        const diff = ideaSubmissionDeadline - currentDate;
         
         if (diff <= 0) {
             // Registration has ended - add fade out animation
@@ -308,7 +306,7 @@ function initCountdown() {
                     const countdownTitle = document.querySelector('.countdown-title');
                     if (countdownTitle) {
                         countdownTitle.style.animation = 'fadeIn 1s forwards';
-                        countdownTitle.innerHTML = '<i class="fas fa-exclamation-triangle me-2 pulse"></i>Registration Closed';
+                        countdownTitle.innerHTML = '<i class="fas fa-exclamation-triangle me-2 pulse"></i>Idea Submission Closed';
                         countdownTitle.style.color = '#f72585';
                     }
                     
