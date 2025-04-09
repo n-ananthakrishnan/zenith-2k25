@@ -696,6 +696,84 @@ header {
     border: 1px solid rgba(247, 37, 133, 0.3);
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.submission-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(58, 12, 163, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(76, 201, 240, 0.2);
+}
+
+.submission-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    min-width: 80px;
+    text-align: center;
+}
+
+.submission-step i {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.submission-step.email-step {
+    flex: 1;
+    min-width: 200px;
+}
+
+.email-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.email-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.submission-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--light-color);
+    opacity: 0.8;
+}
+
+.submission-note i {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .submission-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .submission-step {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .submission-step i {
+        margin-right: 0.5rem;
+    }
+}
+
+.important-notice {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -2429,6 +2507,48 @@ header {
 
     .footer-nav ul {
         gap: 1rem;
+    }
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    margin: 2rem 0;
+}
+
+.cta-buttons .btn {
+    min-width: 200px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-buttons .secondary-btn {
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    color: var(--light-color);
+    border: none;
+    box-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
+}
+
+.cta-buttons .secondary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(76, 201, 240, 0.5);
+}
+
+@media (max-width: 768px) {
+    .cta-buttons .btn {
+        min-width: 160px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cta-buttons .btn {
+        min-width: 140px;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 }
 
