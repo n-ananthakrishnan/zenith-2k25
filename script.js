@@ -285,6 +285,7 @@ function initCountdown() {
     const countdownHours = document.getElementById('countdown-hours');
     const countdownMinutes = document.getElementById('countdown-minutes');
     const countdownSeconds = document.getElementById('countdown-seconds');
+    const countdownContainer = document.querySelector('.countdown-container');
     
     if (!countdownDays || !countdownHours || !countdownMinutes || !countdownSeconds) return;
     
@@ -293,19 +294,28 @@ function initCountdown() {
         const diff = regEndDate - currentDate;
         
         if (diff <= 0) {
-            // Registration has ended
-            countdownDays.textContent = '00';
-            countdownHours.textContent = '00';
-            countdownMinutes.textContent = '00';
-            countdownSeconds.textContent = '00';
-            
-            // Change the countdown title
-            const countdownTitle = document.querySelector('.countdown-title');
-            if (countdownTitle) {
-                countdownTitle.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Registration Closed';
-                countdownTitle.style.color = '#f72585';
+            // Registration has ended - add fade out animation
+            if (countdownContainer) {
+                countdownContainer.style.animation = 'fadeOut 1s forwards';
+                setTimeout(() => {
+                    // Update values
+                    countdownDays.textContent = '00';
+                    countdownHours.textContent = '00';
+                    countdownMinutes.textContent = '00';
+                    countdownSeconds.textContent = '00';
+                    
+                    // Change the countdown title with animation
+                    const countdownTitle = document.querySelector('.countdown-title');
+                    if (countdownTitle) {
+                        countdownTitle.style.animation = 'fadeIn 1s forwards';
+                        countdownTitle.innerHTML = '<i class="fas fa-exclamation-triangle me-2 pulse"></i>Registration Closed';
+                        countdownTitle.style.color = '#f72585';
+                    }
+                    
+                    // Fade back in with updated content
+                    countdownContainer.style.animation = 'fadeIn 1s forwards';
+                }, 1000);
             }
-            
             return;
         }
         
@@ -315,19 +325,32 @@ function initCountdown() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
-        // Update the countdown elements
-        countdownDays.textContent = days < 10 ? `0${days}` : days;
-        countdownHours.textContent = hours < 10 ? `0${hours}` : hours;
-        countdownMinutes.textContent = minutes < 10 ? `0${minutes}` : minutes;
-        countdownSeconds.textContent = seconds < 10 ? `0${seconds}` : seconds;
+        // Update the countdown elements with flip animation
+        const elements = [
+            { el: countdownDays, value: days, prev: countdownDays.textContent },
+            { el: countdownHours, value: hours, prev: countdownHours.textContent },
+            { el: countdownMinutes, value: minutes, prev: countdownMinutes.textContent },
+            { el: countdownSeconds, value: seconds, prev: countdownSeconds.textContent }
+        ];
         
-        // Add pulse animation to changing values
-        if (seconds % 2 === 0) {
+        elements.forEach(({ el, value, prev }) => {
+            const newValue = value < 10 ? `0${value}` : value.toString();
+            if (prev !== newValue) {
+                el.classList.add('flip');
+                el.textContent = newValue;
+                setTimeout(() => el.classList.remove('flip'), 300);
+            }
+        });
+        
+        // Add pulse animation to seconds every 10 seconds
+        if (seconds % 10 === 0) {
             countdownSeconds.classList.add('pulse');
-        } else {
-            countdownSeconds.classList.remove('pulse');
+            setTimeout(() => {
+                countdownSeconds.classList.remove('pulse');
+            }, 1000);
         }
         
+        // Add pulse animation when units change to zero
         if (seconds === 0) {
             countdownMinutes.classList.add('pulse');
             setTimeout(() => {
@@ -347,6 +370,13 @@ function initCountdown() {
             setTimeout(() => {
                 countdownDays.classList.remove('pulse');
             }, 1000);
+        }
+        
+        // Add glow effect when less than 24 hours remaining
+        if (days === 0) {
+            countdownContainer.classList.add('urgent');
+        } else {
+            countdownContainer.classList.remove('urgent');
         }
     }
     
