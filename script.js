@@ -276,8 +276,8 @@ function init3DHoverEffect() {
 
 // Countdown timer
 function initCountdown() {
-    // Set the idea submission deadline to April 27, 2025
-    const ideaSubmissionDeadline = new Date(2025, 3, 27, 23, 59, 59); // April 27, 2025 at 11:59:59 PM
+    // Set the idea submission deadline to April 21, 2025
+    const ideaSubmissionDeadline = new Date(2025, 3, 21, 23, 59, 59); // April 21, 2025 at 11:59:59 PM
     
     const countdownDays = document.getElementById('countdown-days');
     const countdownHours = document.getElementById('countdown-hours');
