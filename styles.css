@@ -208,6 +208,28 @@ header {
     background-color: rgba(76, 201, 240, 0.1);
 }
 
+/* Submit button in navbar */
+.nav-links a.submit-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(247, 37, 133, 0.3);
+    border: 1px solid rgba(247, 37, 133, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links a.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.5);
+    color: var(--light-color);
+    background-color: transparent;
+}
+
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -754,6 +776,51 @@ header {
 .submission-note i {
     color: var(--secondary-color);
     margin-right: 0.5rem;
+}
+
+/* Submit button in main area */
+.submit-button-container {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.submit-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: var(--light-color);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(247, 37, 133, 0.3);
+    border: 1px solid rgba(247, 37, 133, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(247, 37, 133, 0.5);
+    color: var(--light-color);
+}
+
+.form-step {
+    background-color: rgba(247, 37, 133, 0.1);
+    border: 1px solid rgba(247, 37, 133, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.form-step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
 }
 
 @media (max-width: 768px) {
