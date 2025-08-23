@@ -385,7 +385,7 @@ function initCountdown() {
 
 // Countdown Timer
 function initCountdownTimer() {
-    const deadline = new Date('August 25, 2025 23:59:59').getTime();
+    const deadline = new Date('August 27, 2025 23:59:59').getTime();
 
     function updateTimer() {
         const now = new Date().getTime();
